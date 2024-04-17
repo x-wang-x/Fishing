@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://byna11xc6mfjc"]
+
+[ext_resource type="Script" path="res://GameUI/bar.gd" id="1_dv8kq"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_a8bxm"]
+
+[node name="Bar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dv8kq")
+time = 2.0
+range = Vector2(5, 50)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_under = SubResource("ImageTexture_a8bxm")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 48.0
+offset_right = 88.0
+offset_bottom = 23.0
+text = "0"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

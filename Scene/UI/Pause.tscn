@@ -1,0 +1,102 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbxb5mj7akeya"]
+
+[ext_resource type="Theme" uid="uid://b6qqf3s1ja061" path="res://Assets/UI/new_theme.tres" id="1_dpob6"]
+[ext_resource type="Texture2D" uid="uid://b4a54q6x4xop3" path="res://Assets/UI/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Setting menu.png" id="2_ifolc"]
+[ext_resource type="Shader" path="res://Scene/UI/Pause.gdshader" id="2_tpwrd"]
+[ext_resource type="Script" path="res://Scene/UI/Pause.gd" id="3_cen3x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_flit8"]
+shader = ExtResource("2_tpwrd")
+shader_parameter/amount = 2.351
+
+[node name="Pause" type="Control"]
+layout_mode = 3
+anchor_top = 0.435
+anchor_right = 1.272
+anchor_bottom = 1.0
+offset_top = -156.6
+offset_right = -174.08
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(-1.035, 0)
+theme = ExtResource("1_dpob6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_flit8")
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -546.0
+offset_top = -185.0
+offset_right = 369.0
+offset_bottom = 230.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Menu" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.5
+offset_top = -72.5
+offset_right = 89.5
+offset_bottom = 72.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ifolc")
+region_rect = Rect2(139, 12, 106, 122)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+script = ExtResource("3_cen3x")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -66.0
+offset_top = -95.985
+offset_right = 66.0
+offset_bottom = 14.015
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Resume" type="Button" parent="Menu/VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="Setting" type="Button" parent="Menu/VBoxContainer"]
+layout_mode = 2
+text = "Setting
+"
+
+[node name="MainMenu" type="Button" parent="Menu/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="GridContainer" type="GridContainer" parent="Menu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -27.0
+offset_right = 28.0
+offset_bottom = 24.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Menu/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Pause"
+
+[connection signal="pressed" from="Menu/VBoxContainer/Resume" to="Menu" method="_on_resume_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/MainMenu" to="Menu" method="_on_main_menu_pressed"]

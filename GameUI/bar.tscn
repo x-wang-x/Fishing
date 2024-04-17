@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=3 uid="uid://byna11xc6mfjc"]
+
+[ext_resource type="Script" path="res://GameUI/bar.gd" id="1_dv8kq"]
+[ext_resource type="Texture2D" uid="uid://bseq6glskx4wc" path="res://Assets/UI/BarG/bar fill..png" id="3_1su2r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_huht1"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_012yg"]
+color = Color(0.933333, 0, 0, 1)
+thickness = 3
+
+[node name="Bar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -576.0
+offset_bottom = -232.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dv8kq")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 96.0
+value = 40.0
+fill_mode = 1
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 48.0
+offset_right = 88.0
+offset_bottom = 23.0
+text = "0"
+
+[node name="VScrollBar" type="VScrollBar" parent="."]
+custom_minimum_size = Vector2(16, 80)
+layout_mode = 2
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 19.0
+offset_bottom = 99.0
+theme_override_styles/scroll = SubResource("StyleBoxEmpty_huht1")
+theme_override_styles/grabber = SubResource("StyleBoxLine_012yg")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+show_behind_parent = true
+clip_children = 2
+z_as_relative = false
+layout_mode = 2
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 19.0
+offset_bottom = 99.0
+texture = ExtResource("3_1su2r")
+region_rect = Rect2(0, 0, 16, 96)
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Click Region" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 19.0
+offset_bottom = 6.0
+color = Color(1, 0, 1, 1)
+
+[node name="Timeout" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timeout" to="." method="_on_timeout_timeout"]

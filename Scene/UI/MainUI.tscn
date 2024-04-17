@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfkv4fmgx4u5l"]
+
+[ext_resource type="Texture2D" uid="uid://by2medr25sd0d" path="res://Assets/UI/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="1_atcil"]
+[ext_resource type="Theme" uid="uid://b6qqf3s1ja061" path="res://Assets/UI/new_theme.tres" id="1_uw58e"]
+[ext_resource type="Script" path="res://Scene/UI/Menu.gd" id="3_4vtrm"]
+
+[node name="MainUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_uw58e")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.823529, 0.878431, 0.466667, 1)
+
+[node name="Menu" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.0
+offset_top = -100.0
+offset_right = 137.0
+offset_bottom = 97.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_atcil")
+region_rect = Rect2(153, 9, 30, 30)
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+script = ExtResource("3_4vtrm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.5
+offset_top = -35.5
+offset_right = 61.5
+offset_bottom = 35.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" type="Button" parent="Menu/VBoxContainer"]
+layout_mode = 2
+text = "START"
+
+[node name="SettingButton" type="Button" parent="Menu/VBoxContainer"]
+layout_mode = 2
+text = "OPTION"
+
+[node name="ExitButton" type="Button" parent="Menu/VBoxContainer"]
+layout_mode = 2
+text = "EXIT"
+
+[connection signal="pressed" from="Menu/VBoxContainer/StartButton" to="Menu" method="_on_start_button_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/ExitButton" to="Menu" method="_on_exit_button_pressed"]
